@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import List from './List/List'
 
-function App() {
+function App(props) {
+	
+	let allCards = props.store.allCards
+	let lists = props.store.lists
+	console.log(allCards, lists)
+	
+	
+	let ListOfList = lists.map((item)=>{
+		return <List header={item.header} cards={item.cardIds.map(id => allCards[id])} key={item.id}/>
+	})
+	
+	console.log(ListOfList)
+
+	
+	
+	
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+    	<header className="App-header">
+    		<h1>Trelloyes!</h1>
+    		<div className="App-list">
+    			{ListOfList}
+    		</div>
+    	</header>
+    </main>
   );
 }
 
