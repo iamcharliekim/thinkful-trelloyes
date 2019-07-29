@@ -8,7 +8,7 @@ const card = (props) => {
 	
 	return (
 		<div className="Card">
-			<button type="button">delete</button>
+			<button type="button" onClick={props.deleteHandler}>delete</button>
 			<h3>{title}</h3>
 			<p>{content}</p>
 		</div>
